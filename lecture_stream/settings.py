@@ -5,6 +5,7 @@ from datetime import timedelta
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -74,16 +75,21 @@ WSGI_APPLICATION = 'lecture_stream.wsgi.application'
 # }
 
 # Database
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('PGDATABASE'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('PGPASSWORD'),
-        'HOST': os.getenv('PGHOST'),
-        'PORT': os.getenv('PGPORT'),
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('PGDATABASE'),
+#         'USER': os.getenv('PGUSER'),
+#         'PASSWORD': os.getenv('PGPASSWORD'),
+#         'HOST': os.getenv('PGHOST'),
+#         'PORT': os.getenv('PGPORT'),
+#     }
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -138,3 +144,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True  # Only for development
+
+
+''' Database Connections : Supabase
+Project URL: https://ghucazxqdjaedlpgbzkb.supabase.co
+API Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdodWNhenhxZGphZWRscGdiemtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzNjM5NzYsImV4cCI6MjA2NDkzOTk3Nn0.H3K1ydyCXWYsVdIslbOuNIFO2O9su0iWkpDqr6qxLEE
+Database URI: postgresql://postgres:lcconnect@0101()@db.ghucazxqdjaedlpgbzkb.supabase.co:5432/postgres
+'''
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

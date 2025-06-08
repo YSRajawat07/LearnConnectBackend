@@ -14,6 +14,6 @@ class RegisterView(generics.CreateAPIView):
 class UserDetailView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserUpdateSerializer
-    
+
     def get_object(self):
         return self.request.user
