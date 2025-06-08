@@ -12,6 +12,14 @@ class LectureSerializer(serializers.ModelSerializer):
         model = Lecture
         fields = '__all__'
         read_only_fields = ('teacher', 'teacher_name', 'dist')
+        extra_kwargs = {
+            'school': {'required': False, 'allow_null': True},
+            'branch': {'required': False, 'allow_null': True},
+            'semester': {'required': False, 'allow_null': True},
+            'latitude': {'required': False, 'allow_null': True},
+            'longitude': {'required': False, 'allow_null': True},
+            'start_time': {'required': False, 'allow_null': True}
+        }
 
     def create(self, validated_data):
         validated_data['teacher'] = self.context['request'].user
