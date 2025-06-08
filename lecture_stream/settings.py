@@ -76,17 +76,17 @@ WSGI_APPLICATION = 'lecture_stream.wsgi.application'
 
 # Database
 
-# DATABASES = {
-#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,  # Enables persistent DB connections
-        ssl_require=True   # Enforces SSL (required for Supabase)
-    )
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL'),
+#         conn_max_age=600,  # Enables persistent DB connections
+#         ssl_require=True   # Enforces SSL (required for Supabase)
+#     )
+# }
 
 # DATABASES = {
 #     'default': {
